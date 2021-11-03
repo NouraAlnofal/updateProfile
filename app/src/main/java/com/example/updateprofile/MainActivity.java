@@ -26,8 +26,8 @@ public class MainActivity extends AppCompatActivity implements nameDialog.Dialog
         eHeight=(TextView) findViewById(R.id.editHeight);
         eWeight=(TextView) findViewById(R.id.editWeight);
         eFocusArea=(TextView) findViewById(R.id.editFocusArea);
+        eReminder = (TextView) findViewById(R.id.editReminder);
         eTrainingDays = (TextView) findViewById(R.id.editTrainingDays);
-        updateProfile = (Button) findViewById(R.id.updateProfileB);
         updateProfile=(Button) findViewById(R.id.updateProfileB);
 
         eName.setOnClickListener(new View.OnClickListener() {
