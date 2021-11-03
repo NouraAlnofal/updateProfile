@@ -12,7 +12,7 @@ public class MainActivity extends AppCompatActivity implements nameDialog.Dialog
         genderDialog.DialogListener, DB_Dialog.DialogListener, heightDialog.DialogListener,
         areaDialog.DialogListener, weightDialog.DialogListener{
 
-    TextView eName, eGender, eDB, eHeight, eWeight, eFocusArea;
+    TextView eName, eGender, eDB, eHeight, eWeight, eFocusArea, eReminder, eTrainingDays;
     Button updateProfile;
 
     @Override
@@ -26,6 +26,8 @@ public class MainActivity extends AppCompatActivity implements nameDialog.Dialog
         eHeight=(TextView) findViewById(R.id.editHeight);
         eWeight=(TextView) findViewById(R.id.editWeight);
         eFocusArea=(TextView) findViewById(R.id.editFocusArea);
+        eTrainingDays = (TextView) findViewById(R.id.editTrainingDays);
+        updateProfile = (Button) findViewById(R.id.updateProfileB);
         updateProfile=(Button) findViewById(R.id.updateProfileB);
 
         eName.setOnClickListener(new View.OnClickListener() {
