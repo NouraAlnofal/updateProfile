@@ -8,23 +8,24 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.DatePicker;
+import android.widget.TimePicker;
 
 import androidx.appcompat.app.AppCompatDialogFragment;
 
-public class DB_Dialog extends AppCompatDialogFragment {
-    private DatePicker eDB;
+public class reminderDialog extends AppCompatDialogFragment {
+    private TimePicker eReminder;
     private DialogListener listener;
 
     @Override
     public Dialog onCreateDialog( Bundle savedInstanceState) {
         AlertDialog.Builder builder=new AlertDialog.Builder(getActivity());
         LayoutInflater inflater=getActivity().getLayoutInflater();
-        View view= inflater.inflate(R.layout.db_dialog, null);
+        View view= inflater.inflate(R.layout.reminder_dialog, null);
 
 
 
         builder.setView(view)
-                .setTitle("birthday date")
+                .setTitle("Reminder")
                 .setNegativeButton("cancel", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int i) {
@@ -33,15 +34,14 @@ public class DB_Dialog extends AppCompatDialogFragment {
                 }).setPositiveButton("ok", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int i) {
-                eDB=view.findViewById(R.id.eDB);
-                int dobYear = eDB.getYear();
-                int dobMonth = eDB.getMonth()+1;
-                int dobDate = eDB.getDayOfMonth();
+                eReminder=view.findViewById(R.id.eReminder);
+                int rHour = eReminder.getHour();
+                int rMin = eReminder.getMinute()+1;
+
                 StringBuilder sb=new StringBuilder();
-                sb.append(Integer.toString(dobYear)).append("-").append(Integer.toString(dobMonth)).append("-")
-                        .append(Integer.toString(dobDate));
+                sb.append(Integer.toString(rHour)).append(":").append(Integer.toString(rMin));
                 String dobStr=sb.toString();
-                listener.applyDBText(dobStr);
+                listener.applyReminderText(dobStr);
 
 
             }
@@ -62,6 +62,6 @@ public class DB_Dialog extends AppCompatDialogFragment {
     }
 
     public interface DialogListener{
-        void applyDBText(String gender);
+        void applyReminderText(String gender);
     }
 }
