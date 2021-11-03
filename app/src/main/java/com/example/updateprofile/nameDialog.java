@@ -1,13 +1,19 @@
 package com.example.updateprofile;
 
+import static androidx.constraintlayout.helper.widget.MotionEffect.TAG;
+
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.nfc.Tag;
 import android.os.Bundle;
+import android.text.TextUtils;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatDialogFragment;
 
@@ -32,11 +38,12 @@ public class nameDialog extends AppCompatDialogFragment {
             @Override
             public void onClick(DialogInterface dialog, int i) {
                 String name=eName.getText().toString();
-               /* if(name.equals("") || name==null){
-                    //error message ("the name should only contains letters");
-
-                } else {*/
+                if(name.isEmpty()){
+                    Toast.makeText(getActivity(), "Name should not be empty!",
+                          Toast.LENGTH_LONG).show();
+                } else {
                     listener.applyNameText(name);
+                }
 
 
             }

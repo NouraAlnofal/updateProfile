@@ -6,6 +6,8 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.widget.TextView;
+import android.widget.Toast;
+
 import androidx.appcompat.app.AppCompatDialogFragment;
 import java.util.Arrays;
 import java.util.List;
@@ -14,6 +16,7 @@ public class areaDialog extends AppCompatDialogFragment {
     private TextView eFocusArea;
     //private CheckBox eFocusArea;
     private DialogListener listener;
+    private int count=0;
 
     @Override
     public Dialog onCreateDialog( Bundle savedInstanceState) {
@@ -24,6 +27,7 @@ public class areaDialog extends AppCompatDialogFragment {
         boolean[]checkedAreas=new boolean[]{false,false,false,false,false,false,false};
         final List<String> aList= Arrays.asList(focusAreas);
         //eFocusArea= view.findViewById(R.id.editFocusArea);
+
 
 
        // builder.setView(view)
@@ -46,20 +50,26 @@ public class areaDialog extends AppCompatDialogFragment {
             public void onClick(DialogInterface dialog, int which) {
                 /*String area=eFocusArea.getText().toString();
                 listener.applyAreaText(area);*/
+                StringBuilder area=new StringBuilder();
                 for(int i=0;i<checkedAreas.length;i++){
                     boolean checked=checkedAreas[i];
                     if(checked){
-                        eFocusArea.setText(new StringBuilder().append(aList.get(i)).append(" ").toString());
-                    }/*else {
-                        //error message ("you must choose one at least");
-                    }*/
-
+                       area.append(aList.get(i)).append(" ").toString();
+                        count ++;
+                    }
+                }
+                if(count==0){
+                    Toast.makeText(getActivity(), "please select one area at least!",
+                            Toast.LENGTH_LONG).show();
+                }else {
+                    String hStr = area.toString();
+                    listener.applyAreaText(hStr);
                 }
 
 
             }
         });
-       //
+       
         return builder.create();
     }
 

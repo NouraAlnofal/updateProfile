@@ -8,12 +8,17 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.DatePicker;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatDialogFragment;
+import androidx.appcompat.view.ActionBarPolicy;
+
+import java.util.Calendar;
 
 public class DB_Dialog extends AppCompatDialogFragment {
     private DatePicker eDB;
     private DialogListener listener;
+
 
     @Override
     public Dialog onCreateDialog( Bundle savedInstanceState) {
@@ -37,12 +42,19 @@ public class DB_Dialog extends AppCompatDialogFragment {
                 int dobYear = eDB.getYear();
                 int dobMonth = eDB.getMonth()+1;
                 int dobDate = eDB.getDayOfMonth();
-                StringBuilder sb=new StringBuilder();
-                sb.append(Integer.toString(dobYear)).append("-").append(Integer.toString(dobMonth)).append("-")
-                        .append(Integer.toString(dobDate));
-                String dobStr=sb.toString();
-                listener.applyDBText(dobStr);
+                int cur= Calendar.getInstance().get(Calendar.YEAR);
 
+                if(cur-dobYear<=17){
+                    Toast.makeText(getActivity(), "Age must be 18 at least!",
+                            Toast.LENGTH_LONG).show();
+
+                }else {
+                    StringBuilder sb = new StringBuilder();
+                    sb.append(Integer.toString(dobYear)).append("-").append(Integer.toString(dobMonth)).append("-")
+                            .append(Integer.toString(dobDate));
+                    String dobStr = sb.toString();
+                    listener.applyDBText(dobStr);
+                }
 
             }
         });
