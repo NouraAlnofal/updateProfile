@@ -36,7 +36,7 @@ public class reminderDialog extends AppCompatDialogFragment {
             public void onClick(DialogInterface dialog, int i) {
                 eReminder=view.findViewById(R.id.eReminder);
                 int rHour = eReminder.getHour();
-                int rMin = eReminder.getMinute()+1;
+                int rMin = eReminder.getMinute();
 
                 StringBuilder sb=new StringBuilder();
                 sb.append(Integer.toString(rHour)).append(":").append(Integer.toString(rMin));
