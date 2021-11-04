@@ -9,7 +9,8 @@ import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity implements nameDialog.DialogListener,
         genderDialog.DialogListener, DB_Dialog.DialogListener, heightDialog.DialogListener,
-        areaDialog.DialogListener, weightDialog.DialogListener,reminderDialog.DialogListener{
+        areaDialog.DialogListener, weightDialog.DialogListener,
+        reminderDialog.DialogListener, daysDialog.DialogListener{
 
     TextView eName, eGender, eDB, eHeight, eWeight, eFocusArea, eReminder, eTrainingDays;
     Button updateProfile;
@@ -98,6 +99,16 @@ public class MainActivity extends AppCompatActivity implements nameDialog.Dialog
 
 
         });
+
+        eTrainingDays.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                openDaysDialog();
+            }
+
+
+        });
     }
 
     public void openNameDialog(){
@@ -135,6 +146,11 @@ public class MainActivity extends AppCompatActivity implements nameDialog.Dialog
         eReminder.show(getSupportFragmentManager(),"Reminder");
     }
 
+    public void openDaysDialog(){
+       daysDialog eTrainingDays=new daysDialog();
+        eTrainingDays.show(getSupportFragmentManager(),"Training Days");
+    }
+
     public void applyNameText(String name){
         eName.setText(name);
 
@@ -168,6 +184,11 @@ public class MainActivity extends AppCompatActivity implements nameDialog.Dialog
 
     public void applyReminderText(String reminder){
         eReminder.setText(reminder);
+
+    }
+
+    public void applyDaysText(String days){
+        eTrainingDays.setText(days);
 
     }
 
