@@ -5,15 +5,14 @@ import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.os.Bundle;
-import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatDialogFragment;
 import java.util.Arrays;
 import java.util.List;
 
 public class daysDialog extends AppCompatDialogFragment {
-    private TextView eTrainingDays;
     private DialogListener listener;
     private int count=0;
 
@@ -65,7 +64,7 @@ public class daysDialog extends AppCompatDialogFragment {
     }
 
     @Override
-    public void onAttach(Context context) {
+    public void onAttach(@NonNull Context context) {
         super.onAttach(context);
 
         try {

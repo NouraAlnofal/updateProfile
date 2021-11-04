@@ -19,6 +19,7 @@ public class MainActivity extends AppCompatActivity implements nameDialog.Dialog
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         eName=(TextView) findViewById(R.id.editName);
         eGender=(TextView) findViewById(R.id.editGender);
